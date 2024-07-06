@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login Form</title>
+	<link rel="stylesheet" href="promos.css">
+    <script src="../api.js"></script>
+</head>
+<body>
+    <div class="header">
+        <a class="title" href="home.html">Sale Music</a>
+        <div class="menu">
+            <a href="home.html">Inicio</a>
+            <a href="promos.html">Promociones</a>
+            <a href="services.html">Servicios</a>
+            <a id="logout-link" >Logout</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            const apiService = new ApiService();
+            const token = localStorage.getItem('token'); // Asumiendo que almacenas el token en localStorage
+            if (token) {
+                apiService.add_token(token);
+                const isLoggedIn = await apiService.session();
+                if (!isLoggedIn) {
+                    window.location.href = '/SaleMusic/templates/login.html';
+                }
+            } else {
+                window.location.href = '/SaleMusic/templates/login.html';
+            }
+        });
+        
+    document.addEventListener('DOMContentLoaded', function() {
+      const logoutLink = document.getElementById('logout-link');
+      const apiService = new ApiService();
+      // Retrieve the token from local storage if it exists
+      const token = localStorage.getItem('token');      
+
+      logoutLink.addEventListener('click', function(event) {
+          event.preventDefault();
+          apiService.LogOut();
+      });
+  });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Client</title>
+  <script src="api.js"></script>
+</head>
+<body>
+  <script>
+    const apiService = new ApiService();
+
+    async function login() {
+      const credentials = {
+        username: 'duvan',
+        password: 'duvan123'
+      };
+      const tokenData = await apiService.get_token(credentials);
+      apiService.add_token(tokenData.token);
+    }
+    async function fetchData() {
+      const data = await apiService.get('registro');
+      console.log(data);
+    }
+    login().then(fetchData);
+  </script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+*
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body 
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	flex-direction: column;
+	background: #222;
+}
+.container
+{
+	position: relative;
+	width: 380px;
+	height: min-content;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.box 
+{
+	position: relative;
+	width: 100%;
+	height: 420px;
+	background: #111;
+	border-radius: 8px;
+	overflow: hidden;
+}
+.box::before 
+{
+	content: '';
+	z-index: 1;
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 380px;
+	height: 420px;
+	transform-origin: bottom right;
+	background: linear-gradient(0deg,transparent,#45f3ff,#45f3ff);
+	animation: animate 6s linear infinite;
+}
+.box::after 
+{
+	content: '';
+	z-index: 1;
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 380px;
+	height: 420px;
+	transform-origin: bottom right;
+	background: linear-gradient(0deg,transparent,#45f3ff,#45f3ff);
+	animation: animate 6s linear infinite;
+	animation-delay: -3s;
+}
+@keyframes animate 
+{
+	0%
+	{
+		transform: rotate(0deg);
+	}
+	100%
+	{
+		transform: rotate(360deg);
+	}
+}
+form 
+{
+	position: absolute;
+	inset: 2px;
+	background: #222;
+	padding: 50px 40px;
+	border-radius: 8px;
+	z-index: 2;
+	display: flex;
+	flex-direction: column;
+}
+h2 
+{
+	color: #45f3ff;
+	font-weight: 500;
+	text-align: center;
+	letter-spacing: 0.1em;
+}
+.inputBox 
+{
+	position: relative;
+	width: 300px;
+	margin-top: 35px;
+}
+.inputBox input 
+{
+	position: relative;
+	width: 100%;
+	padding: 20px 10px 10px;
+	background: transparent;
+	outline: none;
+	box-shadow: none;
+	border: none;
+	color: #23242a;
+	font-size: 1em;
+	letter-spacing: 0.05em;
+	transition: 0.5s;
+	z-index: 10;
+}
+.inputBox span 
+{
+	position: absolute;
+	left: 0;
+	padding: 20px 0px 10px;
+	pointer-events: none;
+	font-size: 1em;
+	color: #8f8f8f;
+	letter-spacing: 0.05em;
+	transition: 0.5s;
+}
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span 
+{
+	color: #45f3ff;
+	transform: translateX(0px) translateY(-34px);
+	font-size: 0.75em;
+}
+.inputBox i 
+{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 2px;
+	background: #45f3ff;
+	border-radius: 4px;
+	overflow: hidden;
+	transition: 0.5s;
+	pointer-events: none;
+	z-index: 9;
+}
+.inputBox input:valid ~ i,
+.inputBox input:focus ~ i 
+{
+	height: 44px;
+}
+.links 
+{
+	display: flex;
+	justify-content: space-between;
+}
+.links a 
+{
+	margin: 10px 0;
+	font-size: 0.75em;
+	color: #8f8f8f;
+	text-decoration: beige;
+}
+.links a:hover, 
+.links a:nth-child(2)
+{
+	color: #45f3ff;
+}
+.space
+{
+	margin-top: 20px;
+}
+input[type="submit"]
+{
+	border: none;
+	outline: none;
+	padding: 11px 25px;
+	background: #45f3ff;
+	cursor: pointer;
+	border-radius: 4px;
+	font-weight: 600;
+	width: 100px;
+	margin-top: 10px;
+}
+input[type="submit"]:active 
+{
+	opacity: 0.8;
+}
+.tiles
+{
+	position: relative;
+	z-index: 3;
+    width: 100%;
+    height: 80px;
+	background: #222;
+	border-radius: 10px;
+	border: #45f3ff 1px solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+	flex-wrap: wrap;
+}
+.tile
+{
+	width: 25px;
+	height: 60px;
+	background: #333;
+	border-radius: 5px;
+	border: #45f3ff 1px solid;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	cursor: pointer;
+	transition: 0.5s;
+}
+.white-tile
+{
+	background: #45f3ff;
+	position: absolute;
+    z-index: 1;
+    width: 20px;
+    height: 40px;
+    transform: translateX(62%);
+	border: #222 1px solid;
+	border-radius: 5px;
+}
+
+
+
+
+
+#do
+{
+    animation: touch-do 4s ease infinite;
+}
+#re
+{
+    animation: touch-re 4s ease infinite;
+}
+#mi
+{
+    animation: touch-mi 4s ease infinite;
+}
+#fa
+{
+    animation: touch-fa 4s ease infinite;
+}
+#sol
+{
+    animation: touch-sol 4s ease infinite;
+}
+#la
+{
+    animation: touch-la 4s ease infinite;
+}
+#si
+{
+    animation: touch-si 4s ease infinite;
+}
+@keyframes touch-do
+{
+    0% { background: #555; }
+    10% { background: #222; }
+    20% { background: #222; }
+    30% { background: #222; }
+    40% { background: #222; }
+    50% { background: #222; }
+    60% { background: #222; }
+    70% { background: #222; }
+    80% { background: #222; }
+    90% { background: #222; }
+    100% { background: #222; }
+}
+@keyframes touch-fa
+{
+    0% { background: #222; }
+    10% { background: #555; }
+    20% { background: #222; }
+    30% { background: #222; }
+    40% { background: #222; }
+    50% { background: #222; }
+    60% { background: #222; }
+    70% { background: #222; }
+    80% { background: #222; }
+    90% { background: #555; }
+    100% { background: #222; }
+}
+@keyframes touch-mi
+{
+    0% { background: #222; }
+    10% { background: #222; }
+    20% { background: #555; }
+    30% { background: #222; }
+    40% { background: #222; }
+    50% { background: #222; }
+    60% { background: #222; }
+    70% { background: #555; }
+    80% { background: #222; }
+    90% { background: #222; }
+    100% { background: #222; }
+}
+@keyframes touch-re
+{
+    0% { background: #222; }
+    10% { background: #222; }
+    20% { background: #222; }
+    30% { background: #555; }
+    40% { background: #222; }
+    50% { background: #222; }
+    60% { background: #222; }
+    70% { background: #222; }
+    80% { background: #222; }
+    90% { background: #222; }
+    100% { background: #222; }
+}
+@keyframes touch-sol
+{
+    0% { background: #222; }
+    10% { background: #222; }
+    20% { background: #222; }
+    30% { background: #222; }
+    40% { background: #555; }
+    50% { background: #222; }
+    60% { background: #222; }
+    70% { background: #222; }
+    80% { background: #555; }
+    90% { background: #222; }
+    100% { background: #222; }
+}
+@keyframes touch-la
+{
+    0% { background: #222; }
+    10% { background: #222; }
+    20% { background: #222; }
+    30% { background: #222; }
+    40% { background: #222; }
+    50% { background: #555; }
+    60% { background: #222; }
+    70% { background: #222; }
+    80% { background: #222; }
+    90% { background: #222; }
+    100% { background: #222; }
+}
+@keyframes touch-si
+{
+    0% { background: #222; }
+    10% { background: #222; }
+    20% { background: #222; }
+    30% { background: #222; }
+    40% { background: #222; }
+    50% { background: #222; }
+    60% { background: #555; }
+    70% { background: #222; }
+    80% { background: #222; }
+    90% { background: #222; }
+    100% { background: #222; }
+}

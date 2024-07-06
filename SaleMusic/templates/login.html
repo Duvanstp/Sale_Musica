@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login Form</title>
+	<link rel="stylesheet" href="login.css">
+	<script src="../api.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="box">
+			<form id="login-form" autocomplete="off">
+				<h2>Iniciar Sesión</h2>
+				<div class="inputBox">
+					<input type="text" id="username" required="required">
+					<span>Usuario</span>
+					<i></i>
+				</div>
+				<div class="inputBox">
+					<input type="password" id="password" required="required">
+					<span>Contraseña</span>
+					<i></i>
+				</div>
+				<div class="links">
+					<a href="#">Olvidaste tu contraseña ?</a>
+					<a href="./signin.html">Registrarme</a>
+				</div>
+				<input type="submit" value="Entrar">
+			</form>
+		</div>
+		<div class="tiles">
+			<div class="tile" id="do">
+				<div class="white-tile"></div>
+			</div>
+			<div class="tile" id="re">
+				<div class="white-tile"></div>
+			</div>
+			<div class="tile" id="mi">
+				<div class="white-tile"></div>
+			</div>
+			<div class="tile" id="fa"></div>
+			<div class="tile" id="sol">
+				<div class="white-tile"></div>
+			</div>
+			<div class="tile" id="la">
+				<div class="white-tile"></div>
+			</div>
+			<div class="tile" id="si"></div>
+			<div class="tile" id="do">
+				<div class="white-tile"></div>
+			</div>
+			<div class="tile" id="re">
+				<div class="white-tile"></div>
+			</div>
+			<div class="tile" id="mi">
+				<div class="white-tile"></div>
+			</div>
+			<div class="tile" id="fa"></div>
+			<div class="tile" id="sol">
+				<div class="white-tile"></div>
+			</div>
+			<div class="tile" id="la">
+				<div class="white-tile"></div>
+			</div>
+			<div class="tile" id="si"></div>
+		</div>
+	</div>
+
+	<script>
+        document.getElementById('login-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+        
+            const apiService = new ApiService();
+            const data = { username: username, password: password };
+            const response = await apiService.get_token(data);
+
+            if (response && response.token) {
+                apiService.add_token(response.token);
+				localStorage.setItem('token', response.token);
+                // Redirigir a la página deseada TENER CUIDADOOO!!!
+                window.location.href = '/SaleMusic/templates/home.html';
+            } else {
+                alert('Credenciales incorrectas. Inténtalo de nuevo.');
+            }
+        });
+    </script>
+</body>
+</html>

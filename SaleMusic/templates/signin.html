@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Signin Form</title>
+	<link rel="stylesheet" href="signin.css">
+	<script src="../api.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="box">
+			<form id="register-form" autocomplete="off">
+				<h2>Registrarse</h2>
+				<div class="inputBox">
+					<input type="text" id = "first_name" required="required">
+					<span>Nombres</span>	
+					<i></i>
+				</div>
+				<div class="inputBox">
+					<input type="text" id = "last_name" required="required">
+					<span>Apellidos</span>
+					<i></i>
+				</div>
+				<div class="inputBox">
+					<input type="number" id = "age" required="required">
+					<span>Edad</span>
+					<i></i>
+				</div>
+
+				<div class="inputBox">
+					<input type="text" id = "username" required="required">
+					<span>usuario</span>	
+					<i></i>
+				</div>
+
+				<div class="inputBox">
+					<input type="email" id = "email" required="required">
+					<span>Correo</span>
+					<i></i>
+				</div>
+				<div class="inputBox">
+					<input type="password" id = "password" required="required">
+					<span>Contraseña</span>
+					<i></i>
+				</div>
+				<div class="space"></div>
+				<input type="submit" value="Registrarse">
+			</form>
+		</div>
+		<div class="tiles">
+			<div class="tile" id="do">
+				<div class="white-tile"></div>
+			</div>
+			<div class="tile" id="re">
+				<div class="white-tile"></div>
+			</div>
+			<div class="tile" id="mi">
+				<div class="white-tile"></div>
+			</div>
+			<div class="tile" id="fa"></div>
+			<div class="tile" id="sol">
+				<div class="white-tile"></div>
+			</div>
+			<div class="tile" id="la">
+				<div class="white-tile"></div>
+			</div>
+			<div class="tile" id="si"></div>
+			<div class="tile" id="do">
+				<div class="white-tile"></div>
+			</div>
+			<div class="tile" id="re">
+				<div class="white-tile"></div>
+			</div>
+			<div class="tile" id="mi">
+				<div class="white-tile"></div>
+			</div>
+			<div class="tile" id="fa"></div>
+			<div class="tile" id="sol">
+				<div class="white-tile"></div>
+			</div>
+			<div class="tile" id="la">
+				<div class="white-tile"></div>
+			</div>
+			<div class="tile" id="si"></div>
+		</div>
+	</div>
+
+	<script>
+        document.getElementById('register-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const first_name = document.getElementById('first_name').value;
+            const last_name = document.getElementById('last_name').value;
+            const email = document.getElementById('email').value;
+            const age = document.getElementById('age').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+        
+            const apiService = new ApiService();
+            const data = { username: username, 
+				password: password, 
+				first_name: first_name,
+				last_name: last_name,
+                email: email,
+                age: age 
+			};
+			const token = '14b47fe205119ffa50e576c5b6f74a531d4b53e9'; 
+			// Cambiar token por uno del superuser
+			apiService.add_token(token);
+
+
+            try {
+                const response = await apiService.post('registro', data);
+                console.log(response);
+                if (response) {
+                    alert('Usuario creado con éxito');
+                    window.location.href = 'login.html';
+                } else {
+                    alert('Error en la creación del usuario. Inténtalo de nuevo.');
+                }
+            } catch (error) {
+                console.error('Error en la creación del usuario:', error);
+                alert('Error en la creación del usuario. Inténtalo de nuevo.');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login Form</title>
+	<link rel="stylesheet" href="services.css">
+    <script src="../api.js"></script>
+</head>
+<body>
+    <div class="header">
+        <a class="title" href="home.html">Sale Music</a>
+        <div class="menu">
+            <a href="home.html">Inicio</a>
+            <a href="promos.html">Promociones</a>
+            <a href="services.html">Servicios</a>
+            <a id="logout-link" >Logout</a>
+        </div>
+    </div>
+    <div class="intro">
+        <img id="front" src="./mixer.jpg" alt="home">
+        <img id="back" src="./mixer.jpg" alt="home">
+        <p>Bienvenidos al area de servicios</p>
+    </div>
+    <div class="form-section">
+        <div class="container">
+            <div class="box">
+                <form autocomplete="off">
+                    <h2>Formulario de Pago</h2>
+                    <p>Por favor llene el formulario con los datos correspondientes</p>
+                    <div class="select">
+                        <select name="servicio" id="servicio">
+                            <option value="guitarra">Clases de Guitarra</option>
+                            <option value="bateria">Clases de Batería</option>
+                            <option value="piano">Clases de Piano</option>
+                        </select>
+                        <span>Seleccione el tipo de servicio</span>
+                    </div>
+                    <div class="select">
+                        <select name="tarjeta" id="tarjeta">
+                            <option value="paypal">PayPal</option>
+                            <option value="mastercard">Mastercard</option>
+                        </select>
+                        <span>Seleccione su método de pago</span>
+                    </div>
+                    <div class="inputBox">
+                        <input type="email" required="required">
+                        <span>Gmail</span>
+                        <i></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" required="required">
+                        <span>Nombre</span>
+                        <i></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" required="required">
+                        <span>Apellido</span>
+                        <i></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="number" required="required">
+                        <span>Teléfono</span>
+                        <i></i>
+                    </div>
+                    <input type="submit" value="Enviar">
+                </form>
+            </div>
+            <div class="tiles">
+                <div class="tile" id="do">
+                    <div class="white-tile"></div>
+                </div>
+                <div class="tile" id="re">
+                    <div class="white-tile"></div>
+                </div>
+                <div class="tile" id="mi">
+                    <div class="white-tile"></div>
+                </div>
+                <div class="tile" id="fa"></div>
+                <div class="tile" id="sol">
+                    <div class="white-tile"></div>
+                </div>
+                <div class="tile" id="la">
+                    <div class="white-tile"></div>
+                </div>
+                <div class="tile" id="si"></div>
+                <div class="tile" id="do">
+                    <div class="white-tile"></div>
+                </div>
+                <div class="tile" id="re">
+                    <div class="white-tile"></div>
+                </div>
+                <div class="tile" id="mi">
+                    <div class="white-tile"></div>
+                </div>
+                <div class="tile" id="fa"></div>
+                <div class="tile" id="sol">
+                    <div class="white-tile"></div>
+                </div>
+                <div class="tile" id="la">
+                    <div class="white-tile"></div>
+                </div>
+                <div class="tile" id="si"></div>
+            </div>
+        </div>
+        <div class="card">
+			<div class="face front">
+				<h3 class="debit">Debit Card</h3>
+				<h3 class="bank">Bank Name</h3>
+				<img src="chip.png" class="chip">
+				<h3 class="number">0123 4567 8901 2345<br></h3>
+				<h5 class="valid"><span>Valid<br>Date</span><span>10/23</span></h5>
+				<h5 class="cardHolder">Santiago Acevedo</h5>
+			</div>
+		</div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            const apiService = new ApiService();
+            const token = localStorage.getItem('token'); // Asumiendo que almacenas el token en localStorage
+            if (token) {
+                apiService.add_token(token);
+                const isLoggedIn = await apiService.session();
+                if (!isLoggedIn) {
+                    window.location.href = '/SaleMusic/templates/login.html';
+                }
+            } else {
+                window.location.href = '/SaleMusic/templates/login.html';
+            }
+        });
+        
+    document.addEventListener('DOMContentLoaded', function() {
+      const logoutLink = document.getElementById('logout-link');
+      const apiService = new ApiService();
+      // Retrieve the token from local storage if it exists
+      const token = localStorage.getItem('token');      
+
+      logoutLink.addEventListener('click', function(event) {
+          event.preventDefault();
+          apiService.LogOut();
+      });
+  });
+    </script>
+    </body>
+    </html>
